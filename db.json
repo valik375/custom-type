@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "id": "Cn7pi3vS64A",
+      "name": "Adam",
+      "avatar": null,
+      "email": "adam@example.com"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
