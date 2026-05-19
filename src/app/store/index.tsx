@@ -3,13 +3,15 @@ import { useDispatch, useSelector, useStore } from "react-redux";
 import layoutSlice from "@/app/store/layout.slice";
 
 import typeTestReducer from "@/widgets/type-test/model/slice";
-import profileSlice from "@/entities/user/model/store";
+import toastSlice from "@/shared/lib/toast/model/store";
+import editProfileSlice from "@/features/edit-profile/model/store";
 
 export const store = configureStore({
   reducer: {
     [typeTestReducer.name]: typeTestReducer.reducer,
     [layoutSlice.name]: layoutSlice.reducer,
-    [profileSlice.name]: profileSlice.reducer,
+    [toastSlice.name]: toastSlice.reducer,
+    [editProfileSlice.name]: editProfileSlice.reducer,
   },
 });
 

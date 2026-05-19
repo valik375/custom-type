@@ -7,12 +7,12 @@ export const loginSchema = z.object({
 
 export const registrationSchema = z
   .object({
-    username: z.string().trim().min(1, "Username is required"),
+    name: z.string().trim().min(1, "Username is required"),
     email: z.string().trim().min(1, "Email is required").email("Invalid email"),
     password: z.string().trim().min(1, "Password is required"),
-    confirmPassword: z.string().trim().min(1, "Confirm password is required"),
+    passwordConfirm: z.string().trim().min(1, "Confirm password is required"),
   })
-  .refine((data) => data.password === data.confirmPassword, {
+  .refine((data) => data.password === data.passwordConfirm, {
     message: "Passwords do not match",
-    path: ["confirmPassword"],
+    path: ["passwordConfirm"],
   });

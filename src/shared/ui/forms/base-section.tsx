@@ -7,9 +7,6 @@ interface BaseSectionProps {
 
 function BaseSection({ children, className }: BaseSectionProps) {
   return (
-    // <div className={clsx("border-(--card-border) border-x", className)}>
-    //   <div className="">{children}</div>
-    // </div>
     <div
       className={clsx(
         "w-full border-b border-(--border-primary) px-4",
@@ -22,6 +19,5 @@ function BaseSection({ children, className }: BaseSectionProps) {
     </div>
   );
 }
-//
 
 export default BaseSection;

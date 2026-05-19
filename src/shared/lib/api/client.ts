@@ -1,13 +1,23 @@
-const baseUrl = "http://localhost:3000";
+const baseUrl = "http://127.0.0.1:8090/api";
 
-export type ApiOptions = RequestInit & {
-  params?: Record<string, string | number | boolean | undefined>;
+export type ApiOptions<TBody = unknown> = {
+  method?: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+  body?: TBody;
+  params?: Record<string, string | number | boolean | undefined | null>;
+  headers?: Record<string, string>;
 };
 
 const api = async (path: string, options: ApiOptions) => {
+  console.log();
+  const token = localStorage.getItem("userToken");
+  const extraHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+  const isFormData = options.body instanceof FormData;
+  const jsonHeader =
+    options.body && !isFormData ? { "Content-Type": "application/json" } : {};
   const res = await fetch(`${baseUrl + path}`, {
     headers: {
-      "Content-Type": "application/json",
+      ...jsonHeader,
+      ...extraHeaders,
       ...(options.headers ?? {}),
     },
     ...options,
@@ -57,7 +67,7 @@ export const apiPost = <T>(path: string, body: T, options?: ApiOptions) => {
 };
 
 export const apiPatch = <T>(path: string, body: T, options?: ApiOptions) => {
-  return api(path, { method: "PATCH", body: JSON.stringify(body), ...options });
+  return api(path, { method: "PATCH", body: body, ...options });
 };
 
 export const apiDelete = (path: string, options?: ApiOptions) => {

@@ -3,8 +3,10 @@
 
 :root {
     --text-primary: #b0e4cc;
-    --text-secondary: #285a48;
-    --main-bg: #091413;
+    --text-secondary: #3f8f72;
+    /*--text-secondary: #285a48;*/
+    --main-bg: #0c1a1a;
+    /*--main-bg: #091413;*/
     --cursor-color: var(--color-primary);
     --color-primary: #408a71;
     --color-primary-1: color-mix(
@@ -19,10 +21,21 @@
     );
     --border-primary: #408a71;
 
-    /*CARD*/
-    --card-bg: var(--main-bg);
-    --card-radius: 4px;
-    --card-border: var(--color-primary);
+    /*Dropdown*/
+    --dropdown-bg: #091413;
+    --dropdown-item-hover: #122725;
+    --dropdown-border: var(--border-primary);
+
+    /*Modal*/
+    --modal-bg: var(--main-bg);
+    --modal-border: var(--border-primary);
+
+    /*Button*/
+    --button-primary-bg: var(--main-bg);
+
+    --modal-primary-border: var(--border-primary);
+    --modal-primary-hover: #122725;
+    --modal-primary-active: #193936;
 }
 
 * {
@@ -30,4 +43,12 @@
     text-decoration: none;
     font-family: "JetBrains Mono", monospace;
     color: var(--text-primary);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    -webkit-text-fill-color: var(--text-primary);
+    transition: background-color 9999s ease-in-out 0s;
 }

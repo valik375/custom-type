@@ -1,22 +1,13 @@
 import { Outlet } from "react-router";
-
-// import { useMutation, useQuery } from "@tanstack/react-query";
-// import { getProfile, createProfile } from "@/entities/user/api/getProfile";
+import { useCurrentUser } from "@/entities/user";
 
 function RootLayout() {
-  // const query = useQuery({
-  //   queryKey: ["profile"],
-  //   queryFn: () => getProfile("Cn7pi3vS64A"),
-  // });
+  const { isLoading } = useCurrentUser();
 
-  // const res = mutation.mutate({
-  //   id: uuidv4(),
-  //   name: "Adam",
-  //   avatar: null,
-  //   email: "adam@example.com",
-  // });
+  if (isLoading) {
+    return <div>Loading</div>;
+  }
 
-  // console.log(query);
   return <Outlet />;
 }
 

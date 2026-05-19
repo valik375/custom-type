@@ -6,6 +6,16 @@ import babel from "@rolldown/plugin-babel";
 
 // https://vite.dev/config/
 export default defineConfig({
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://127.0.0.1:8090",
+        changeOrigin: true,
+        secure: false,
+        ws: true,
+      },
+    },
+  },
   plugins: [
     react(),
     tailwindcss(),

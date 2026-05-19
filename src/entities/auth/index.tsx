@@ -1,4 +1,3 @@
-import LoginForm from "./ui/login-form";
-import RegistrationForm from "./ui/registration-form";
+import { logoutProfile } from "./api/auth";
 
-export { LoginForm, RegistrationForm };
+export { logoutProfile };
